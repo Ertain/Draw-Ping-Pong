@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ping_pong_8bit_beeep.ogg-945501814dc09b5bdfe3ee63f23f20da.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/sounds_ping_pong_8bit/ping_pong_8bit_beeep.ogg"
+dest_files=[ "res://.import/ping_pong_8bit_beeep.ogg-945501814dc09b5bdfe3ee63f23f20da.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

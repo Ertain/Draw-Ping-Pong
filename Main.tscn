@@ -1,0 +1,433 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Scripts/Walls.gd" type="Script" id=1]
+[ext_resource path="res://fence.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Puck.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Boundary.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Mr_puck.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/paddle.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Sounds/sounds_ping_pong_8bit/ping_pong_8bit_beeep.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Sounds/sounds_ping_pong_8bit/ping_pong_8bit_plop.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sounds/sounds_ping_pong_8bit/ping_pong_8bit_peeeeeep.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Assets/DejaVuSerif.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 514, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 519, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 114.754, 298.859 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 114.754, 298.859 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 309 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 10, 299.451 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 8.0
+
+[sub_resource type="DynamicFont" id=8]
+size = 37
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 37
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 23
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 19
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=12]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 14
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 14
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 10 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "Scene massively inspired by the official \"Pong\" demo."
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fence" type="Sprite" parent="."]
+position = Vector2( 512, 312 )
+texture = ExtResource( 2 )
+
+[node name="Top" type="Area2D" parent="."]
+position = Vector2( 514, -10 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+shape = SubResource( 1 )
+
+[node name="Beep" type="AudioStreamPlayer" parent="Top"]
+stream = ExtResource( 8 )
+
+[node name="Bottom" type="Area2D" parent="."]
+position = Vector2( 516, 610 )
+script = ExtResource( 1 )
+_bounce_direction = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+shape = SubResource( 2 )
+
+[node name="Beep" type="AudioStreamPlayer" parent="Bottom"]
+stream = ExtResource( 8 )
+
+[node name="Left field" type="ColorRect" parent="."]
+anchor_right = 0.227
+anchor_bottom = 1.0
+margin_right = -0.448013
+mouse_filter = 2
+color = Color( 0.576471, 0.576471, 0.576471, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right field" type="ColorRect" parent="."]
+anchor_left = 0.781
+anchor_top = 0.013
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -7.74402
+margin_top = -7.8
+mouse_filter = 2
+color = Color( 0.576471, 0.576471, 0.576471, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Node2D" parent="."]
+script = ExtResource( 6 )
+_ball_direction = 1
+line_color = Color( 0.882353, 0.192157, 0.192157, 1 )
+
+[node name="Left paddle" type="Area2D" parent="Left"]
+position = Vector2( -1.75017, 4.63644 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left/Left paddle"]
+position = Vector2( 117, 295 )
+shape = SubResource( 3 )
+
+[node name="Beep" type="AudioStreamPlayer" parent="Left"]
+stream = ExtResource( 7 )
+
+[node name="Right" type="Node2D" parent="."]
+script = ExtResource( 6 )
+_ball_direction = -1
+line_color = Color( 0.219608, 0.27451, 0.886275, 1 )
+
+[node name="Right paddle" type="Area2D" parent="Right"]
+position = Vector2( 870, 302 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/Right paddle"]
+position = Vector2( 38.7052, -2.24747 )
+shape = SubResource( 4 )
+
+[node name="Beep" type="AudioStreamPlayer" parent="Right"]
+stream = ExtResource( 7 )
+
+[node name="Out of bounds left" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Out of bounds left"]
+position = Vector2( -16.6189, 301.603 )
+shape = SubResource( 5 )
+
+[node name="Beep" type="AudioStreamPlayer" parent="Out of bounds left"]
+stream = ExtResource( 9 )
+
+[node name="Out of bounds right" type="Area2D" parent="."]
+position = Vector2( 1034.62, 302 )
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Out of bounds right"]
+position = Vector2( 0, -1.68179 )
+shape = SubResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Beep" type="AudioStreamPlayer" parent="Out of bounds right"]
+stream = ExtResource( 9 )
+
+[node name="Mr_puck" type="Area2D" parent="."]
+position = Vector2( 512, 307 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mr_puck"]
+shape = SubResource( 7 )
+
+[node name="Puck" type="Sprite" parent="Mr_puck"]
+texture = ExtResource( 3 )
+
+[node name="Left_score" type="Label" parent="."]
+anchor_left = 0.289
+anchor_top = 0.04
+anchor_right = 0.359
+anchor_bottom = 0.16
+margin_left = 0.0639954
+margin_top = -1.90735e-06
+margin_right = 0.383972
+margin_bottom = -7.62939e-06
+custom_fonts/font = SubResource( 8 )
+text = "00"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right_score" type="Label" parent="."]
+anchor_left = 0.641
+anchor_top = 0.04
+anchor_right = 0.711
+anchor_bottom = 0.16
+margin_left = -0.384033
+margin_top = -1.90735e-06
+margin_right = -0.0640259
+margin_bottom = -7.62939e-06
+custom_fonts/font = SubResource( 9 )
+text = "00"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Winner_container" type="MarginContainer" parent="."]
+pause_mode = 2
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -116.0
+margin_right = 120.0
+margin_bottom = 108.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Winner_container"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 236.0
+margin_bottom = 220.0
+color = Color( 0.878431, 0.921569, 0.113725, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Winner_container/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Winner_container/ColorRect/VBoxContainer"]
+margin_right = 232.0
+margin_bottom = 106.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "A player is a winner!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart_button" type="Button" parent="Winner_container/ColorRect/VBoxContainer"]
+margin_left = 55.0
+margin_top = 148.0
+margin_right = 176.0
+margin_bottom = 177.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 11 )
+text = "Play again?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="PanelContainer" parent="."]
+pause_mode = 2
+anchor_left = 0.371
+anchor_top = 0.33
+anchor_right = 0.629
+anchor_bottom = 0.667
+margin_left = 0.0959778
+margin_top = -1.52588e-05
+margin_right = -0.0960083
+margin_bottom = 1.79996
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 257.0
+margin_bottom = 197.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Title/VBoxContainer"]
+margin_right = 250.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+custom_fonts/font = SubResource( 12 )
+text = "Draw Ping Pong"
+align = 1
+valign = 1
+
+[node name="Start game" type="Button" parent="Title/VBoxContainer"]
+margin_top = 34.0
+margin_right = 250.0
+margin_bottom = 84.0
+mouse_filter = 1
+size_flags_horizontal = 7
+size_flags_vertical = 7
+size_flags_stretch_ratio = 0.5
+custom_fonts/font = SubResource( 17 )
+text = "Start game"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Title/VBoxContainer"]
+margin_top = 88.0
+margin_right = 250.0
+margin_bottom = 190.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 4
+
+[node name="Player 1 colors" type="VBoxContainer" parent="Title/VBoxContainer/HBoxContainer"]
+margin_right = 123.0
+margin_bottom = 102.0
+size_flags_horizontal = 3
+custom_constants/separation = 4
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/Player 1 colors"]
+margin_right = 123.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 14 )
+text = "Player 1 color"
+align = 1
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Title/VBoxContainer/HBoxContainer/Player 1 colors"]
+margin_left = 8.0
+margin_top = 51.0
+margin_right = 114.0
+margin_bottom = 71.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "Choose a color"
+color = Color( 0.882353, 0.192157, 0.192157, 1 )
+edit_alpha = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player 2 colors" type="VBoxContainer" parent="Title/VBoxContainer/HBoxContainer"]
+margin_left = 127.0
+margin_right = 250.0
+margin_bottom = 102.0
+size_flags_horizontal = 3
+custom_constants/separation = 4
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/Player 2 colors"]
+margin_right = 123.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 15 )
+text = "Player 2 color"
+align = 1
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Title/VBoxContainer/HBoxContainer/Player 2 colors"]
+margin_left = 8.0
+margin_top = 51.0
+margin_right = 114.0
+margin_bottom = 71.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "Choose a color"
+color = Color( 0.219608, 0.27451, 0.886275, 1 )
+edit_alpha = false
+
+[connection signal="area_entered" from="Top" to="Top" method="_on_area_entered"]
+[connection signal="area_entered" from="Bottom" to="Bottom" method="_on_area_entered"]
+[connection signal="input_event" from="Left/Left paddle" to="Left" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="Right/Right paddle" to="Right" method="_on_Area2D_input_event"]
+[connection signal="area_entered" from="Out of bounds left" to="Out of bounds left" method="_on_boundary_entered"]
+[connection signal="scored" from="Out of bounds left" to="." method="_on_Out_of_bounds_left_scored"]
+[connection signal="area_entered" from="Out of bounds right" to="Out of bounds right" method="_on_boundary_entered"]
+[connection signal="scored" from="Out of bounds right" to="." method="_on_Out_of_bounds_right_scored"]
+[connection signal="pressed" from="Winner_container/ColorRect/VBoxContainer/Restart_button" to="." method="_on_Restart_button_pressed"]
+[connection signal="pressed" from="Title/VBoxContainer/Start game" to="." method="_on_Start_game_pressed"]
+[connection signal="color_changed" from="Title/VBoxContainer/HBoxContainer/Player 1 colors/ColorPickerButton" to="Left" method="_on_Player1_color_picked_changed"]
+[connection signal="color_changed" from="Title/VBoxContainer/HBoxContainer/Player 2 colors/ColorPickerButton" to="Right" method="_on_Player2_color_changed"]
