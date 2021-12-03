@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Draw ping pong"
-config/description="Bounce the puck into your opponent's goal! Draw a paddle to bounce the puck!"
+config/description="Draw a paddle to bounce the puck. Bounce the puck into your opponent's goal. Score points and win the match!"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 

@@ -62,7 +62,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=13]
 size = 20
 use_mipmaps = true
 use_filter = true
@@ -352,20 +352,20 @@ mouse_filter = 1
 size_flags_horizontal = 7
 size_flags_vertical = 7
 size_flags_stretch_ratio = 0.5
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 13 )
 text = "Start game"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Title/VBoxContainer"]
 margin_top = 88.0
 margin_right = 250.0
-margin_bottom = 190.0
+margin_bottom = 189.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 4
 
 [node name="Player 1 colors" type="VBoxContainer" parent="Title/VBoxContainer/HBoxContainer"]
 margin_right = 123.0
-margin_bottom = 102.0
+margin_bottom = 101.0
 size_flags_horizontal = 3
 custom_constants/separation = 4
 
@@ -395,7 +395,7 @@ __meta__ = {
 [node name="Player 2 colors" type="VBoxContainer" parent="Title/VBoxContainer/HBoxContainer"]
 margin_left = 127.0
 margin_right = 250.0
-margin_bottom = 102.0
+margin_bottom = 101.0
 size_flags_horizontal = 3
 custom_constants/separation = 4
 
