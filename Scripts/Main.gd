@@ -40,6 +40,7 @@ func get_right_score() -> int:
 
 func win( who: String ):
     get_tree().set_pause( true )
+    $Winning_sound.play()
     winner_container.get_node("ColorRect/VBoxContainer/Label").text = who + " is the winner!"
     winner_container.show()
 
