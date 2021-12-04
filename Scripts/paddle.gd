@@ -21,10 +21,17 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
             if array_of_line_objects.size() < 1:
                 active_line = Line2D.new()
                 active_body = Area2D.new()
-                active_body.connect("area_entered", self, "_on_area_entered")
+                var result: int = active_body.connect("area_entered", self, "_on_area_entered")
+                if result != OK:
+                    push_error("Can't connect area signal.")
                 active_line.add_child( active_body )
                 array_of_line_objects.append( active_line )
                 active_line.default_color = line_color
+                ## Round that stuff.
+                active_line.begin_cap_mode = Line2D.LINE_CAP_ROUND
+                active_line.joint_mode = Line2D.LINE_JOINT_ROUND
+                active_line.end_cap_mode = Line2D.LINE_CAP_ROUND
+                ##
                 active_line.width = 10.0
             elif array_of_line_objects.size() == 1:
                 var dead_line: Line2D = array_of_line_objects.pop_front()
@@ -35,10 +42,17 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
                 # Add a new line.
                 active_line = Line2D.new()
                 active_body = Area2D.new()
-                active_body.connect("area_entered", self, "_on_area_entered")
+                var result: int = active_body.connect("area_entered", self, "_on_area_entered")
+                if result != OK:
+                    push_error("Couldn't connect area signal.")
                 active_line.add_child( active_body )
                 array_of_line_objects.append( active_line )
                 active_line.default_color = line_color
+                ## Round that stuff.
+                active_line.begin_cap_mode = Line2D.LINE_CAP_ROUND
+                active_line.joint_mode = Line2D.LINE_JOINT_ROUND
+                active_line.end_cap_mode = Line2D.LINE_CAP_ROUND
+                ##
                 active_line.width = 10.0
         else:
             pressed = false
@@ -46,10 +60,10 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
     if event is InputEventMouseMotion:
         if pressed:
             # Shorten the number of points that make up the line.
-            if active_line.get_point_count() == 10:
+            if active_line.get_point_count() == 8:
                 active_line.remove_point( 0 )
             # Remove any left over segments after removing points. Also note that the Line2D should only have *one* child (though it could have several grandchildren).
-            if active_body.get_child_count() > 7:
+            if active_body.get_child_count() > 5:
                 active_body.get_child( 0 ).queue_free()
             # Add in the line segments.
             if active_line.get_point_count() > 2:
@@ -64,6 +78,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
                 collision.shape.b = active_line.points[ active_line.points.size() - 2 ]
                 active_body.add_child( collision )
             active_line.add_point(event.position)
+            # Check for whether this `Line2D` has already been added as a child.
             if active_line.get_name() != "" and has_node( active_line.get_name() ):
                 return
             add_child( active_line )

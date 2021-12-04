@@ -3,9 +3,6 @@ extends Area2D
 
 export var _bounce_direction: int = 1
 
-func _ready():
-    $Beep.get_stream().set_loop(false)
-
 func _on_area_entered( area: Area2D ):
     if area.get_name() == "Mr_puck":
         $Beep.play()
