@@ -5,9 +5,6 @@ onready var beep: AudioStreamPlayer = $Beep
 
 signal scored
 
-func _ready():
-    beep.get_stream().set_loop( false )
-
 func _on_boundary_entered( area: Area2D ) -> void:
     if area.get_name() == "Mr_puck":
         beep.play()

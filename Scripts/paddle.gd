@@ -10,9 +10,6 @@ export (int) var _ball_direction: int = 0
 
 export (Color) var line_color: Color = Color("#ffffff")
 
-func _ready():
-    $Beep.get_stream().set_loop(false)
-
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
     if event is InputEventMouseButton:
         if event.pressed:
