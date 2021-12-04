@@ -26,7 +26,7 @@ func set_left_score( point: int ) -> void:
 
 func get_left_score() -> int:
     if left_player_score >= 3:
-        win("Left player")
+        win("Player 1")
     return left_player_score
 
 func set_right_score( point: int ) -> void:
@@ -35,7 +35,7 @@ func set_right_score( point: int ) -> void:
 
 func get_right_score() -> int:
     if right_player_score >= 3:
-        win("Right player")
+        win("Player 2")
     return right_player_score
 
 func win( who: String ):

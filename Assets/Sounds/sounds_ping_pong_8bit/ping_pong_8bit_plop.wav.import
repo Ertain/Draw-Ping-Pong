@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ping_pong_8bit_plop.wav-e4f5b80fe7ca0f988b36b1d861607ecb.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/sounds_ping_pong_8bit/ping_pong_8bit_plop.wav"
+dest_files=[ "res://.import/ping_pong_8bit_plop.wav-e4f5b80fe7ca0f988b36b1d861607ecb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
