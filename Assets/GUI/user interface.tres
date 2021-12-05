@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=5 format=2]
+
+[ext_resource path="res://Assets/GUI/Simple GUI/background_blue.png" type="Texture" id=1]
+[ext_resource path="res://Assets/GUI/Simple GUI/button_1_blue.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 52, 18 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 134, 111 )
+margin_left = 2.0
+
+[resource]
+Button/styles/Mr_button = SubResource( 1 )
+PanelContainer/styles/Mr_panel = SubResource( 2 )

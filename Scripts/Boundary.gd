@@ -1,4 +1,5 @@
 # Based upon the official Godot "Pong" demo.
+# These are the "fences" that the opposing player aims for so as to score a point.
 extends Area2D
 
 onready var beep: AudioStreamPlayer = $Beep

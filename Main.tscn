@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Scripts/Walls.gd" type="Script" id=1]
 [ext_resource path="res://fence.png" type="Texture" id=2]
@@ -7,10 +7,18 @@
 [ext_resource path="res://Scripts/Mr_puck.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/paddle.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Sounds/sounds_ping_pong_8bit/ping_pong_8bit_beeep.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Sounds/round_end.wav" type="AudioStream" id=8]
 [ext_resource path="res://Assets/Sounds/sounds_ping_pong_8bit/ping_pong_8bit_peeeeeep.wav" type="AudioStream" id=9]
 [ext_resource path="res://Assets/DejaVuSerif.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Sounds/sounds_ping_pong_8bit/ping_pong_8bit_plop.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/GUI/user interface.tres" type="Theme" id=13]
+[ext_resource path="res://Assets/GUI/Simple GUI/border_dark_blue.png" type="Texture" id=14]
+[ext_resource path="res://Assets/fonts/font 2/pixelfont2.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://Assets/GUI/Simple GUI/background_blue.png" type="Texture" id=16]
+[ext_resource path="res://Assets/GUI/Simple GUI/button_1_blue.png" type="Texture" id=17]
+[ext_resource path="res://Assets/fonts/font 1/pixelfont.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://Assets/dot.png" type="Texture" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 514, 10 )
@@ -37,48 +45,73 @@ radius = 8.0
 size = 37
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 10 )
+font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 37
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 10 )
+font_data = ExtResource( 18 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 58, 40 )
+
+[sub_resource type="DynamicFont" id=11]
 size = 23
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 10 )
+font_data = ExtResource( 18 )
 
-[sub_resource type="DynamicFont" id=11]
-size = 19
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 10 )
-
-[sub_resource type="DynamicFont" id=12]
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 10 )
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 52, 18 )
 
 [sub_resource type="DynamicFont" id=13]
+size = 18
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 2
+extra_spacing_bottom = 2
+font_data = ExtResource( 15 )
+fallback/0 = ExtResource( 10 )
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 134, 111 )
+
+[sub_resource type="DynamicFont" id=15]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 15 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 52, 18 )
+
+[sub_resource type="DynamicFont" id=17]
 size = 20
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 10 )
+font_data = ExtResource( 15 )
 
-[sub_resource type="DynamicFont" id=14]
-size = 14
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.0588235, 0.423529, 0.611765, 1 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 12
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 10 )
+font_data = ExtResource( 15 )
 
-[sub_resource type="DynamicFont" id=15]
-size = 14
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.0588235, 0.423529, 0.611765, 1 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 12
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 10 )
+font_data = ExtResource( 15 )
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -89,6 +122,8 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": "Scene massively inspired by the official \"Pong\" demo."
 }
+winner_container_path = NodePath("Winner_container")
+winner_container_label_path = NodePath("Winner_container/Panel/VBoxContainer/Label")
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -221,10 +256,10 @@ anchor_right = 0.359
 anchor_bottom = 0.16
 margin_left = 0.0639954
 margin_top = -1.90735e-06
-margin_right = 0.383972
+margin_right = 2.384
 margin_bottom = -7.62939e-06
 custom_fonts/font = SubResource( 8 )
-text = "00"
+text = "0/3"
 align = 1
 valign = 1
 __meta__ = {
@@ -241,7 +276,7 @@ margin_top = -1.90735e-06
 margin_right = -0.0640259
 margin_bottom = -7.62939e-06
 custom_fonts/font = SubResource( 9 )
-text = "00"
+text = "0/3"
 align = 1
 valign = 1
 __meta__ = {
@@ -250,6 +285,7 @@ __meta__ = {
 
 [node name="Winner_container" type="MarginContainer" parent="."]
 pause_mode = 2
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -258,6 +294,7 @@ margin_left = -120.0
 margin_top = -116.0
 margin_right = 120.0
 margin_bottom = 108.0
+theme = ExtResource( 13 )
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
 custom_constants/margin_left = 4
@@ -266,14 +303,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="Winner_container"]
+[node name="Panel" type="Panel" parent="Winner_container"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 236.0
 margin_bottom = 220.0
-color = Color( 0.878431, 0.921569, 0.113725, 1 )
+theme = ExtResource( 13 )
+custom_styles/panel = SubResource( 10 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Winner_container/ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Winner_container/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -282,14 +320,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Winner_container/ColorRect/VBoxContainer"]
+[node name="Label" type="Label" parent="Winner_container/Panel/VBoxContainer"]
 margin_right = 232.0
 margin_bottom = 106.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "A player is a winner!"
+custom_fonts/font = SubResource( 11 )
+text = "A winner is you!"
 align = 1
 valign = 1
 autowrap = true
@@ -297,22 +334,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Restart_button" type="Button" parent="Winner_container/ColorRect/VBoxContainer"]
-margin_left = 55.0
-margin_top = 148.0
-margin_right = 176.0
-margin_bottom = 177.0
+[node name="Restart_button" type="Button" parent="Winner_container/Panel/VBoxContainer"]
+margin_left = 53.0
+margin_top = 150.0
+margin_right = 178.0
+margin_bottom = 175.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 11 )
+theme = ExtResource( 13 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 text = "Play again?"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Winning_sound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 8 )
+volume_db = -9.087
+
 [node name="Title" type="PanelContainer" parent="."]
 pause_mode = 2
-visible = false
 anchor_left = 0.371
 anchor_top = 0.33
 anchor_right = 0.629
@@ -321,68 +366,83 @@ margin_left = 0.0959778
 margin_top = -1.52588e-05
 margin_right = -0.0960083
 margin_bottom = 1.79996
+theme = ExtResource( 13 )
+custom_styles/panel = SubResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Title"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 257.0
-margin_bottom = 197.0
+[node name="MarginContainer" type="MarginContainer" parent="Title"]
+margin_right = 264.0
+margin_bottom = 204.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 5
+custom_constants/margin_left = 11
+custom_constants/margin_bottom = -8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title/MarginContainer"]
+margin_left = 11.0
+margin_top = 5.0
+margin_right = 254.0
+margin_bottom = 211.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Title/VBoxContainer"]
-margin_right = 250.0
-margin_bottom = 30.0
+[node name="Label" type="Label" parent="Title/MarginContainer/VBoxContainer"]
+margin_right = 243.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 15 )
 text = "Draw Ping Pong"
 align = 1
 valign = 1
 
-[node name="Start game" type="Button" parent="Title/VBoxContainer"]
-margin_top = 34.0
-margin_right = 250.0
-margin_bottom = 84.0
+[node name="Start game" type="Button" parent="Title/MarginContainer/VBoxContainer"]
+margin_top = 37.0
+margin_right = 243.0
+margin_bottom = 92.0
 mouse_filter = 1
 size_flags_horizontal = 7
 size_flags_vertical = 7
 size_flags_stretch_ratio = 0.5
-custom_fonts/font = SubResource( 13 )
+theme = ExtResource( 13 )
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
 text = "Start game"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Title/VBoxContainer"]
-margin_top = 88.0
-margin_right = 250.0
-margin_bottom = 189.0
+[node name="Player colors Hbox" type="HBoxContainer" parent="Title/MarginContainer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 243.0
+margin_bottom = 206.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 4
 
-[node name="Player 1 colors" type="VBoxContainer" parent="Title/VBoxContainer/HBoxContainer"]
-margin_right = 123.0
-margin_bottom = 101.0
+[node name="Player 1 colors" type="VBoxContainer" parent="Title/MarginContainer/VBoxContainer/Player colors Hbox"]
+margin_right = 119.0
+margin_bottom = 110.0
 size_flags_horizontal = 3
 custom_constants/separation = 4
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/Player 1 colors"]
-margin_right = 123.0
-margin_bottom = 17.0
+[node name="Label" type="Label" parent="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 1 colors"]
+margin_right = 119.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_styles/normal = SubResource( 18 )
+custom_fonts/font = SubResource( 19 )
 text = "Player 1 color"
 align = 1
 valign = 1
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="Title/VBoxContainer/HBoxContainer/Player 1 colors"]
-margin_left = 8.0
-margin_top = 51.0
-margin_right = 114.0
-margin_bottom = 71.0
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 1 colors"]
+margin_left = 6.0
+margin_top = 54.0
+margin_right = 112.0
+margin_bottom = 74.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 text = "Choose a color"
@@ -392,32 +452,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player 2 colors" type="VBoxContainer" parent="Title/VBoxContainer/HBoxContainer"]
-margin_left = 127.0
-margin_right = 250.0
-margin_bottom = 101.0
+[node name="Player 2 colors" type="VBoxContainer" parent="Title/MarginContainer/VBoxContainer/Player colors Hbox"]
+margin_left = 123.0
+margin_right = 243.0
+margin_bottom = 110.0
 size_flags_horizontal = 3
 custom_constants/separation = 4
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/Player 2 colors"]
-margin_right = 123.0
-margin_bottom = 17.0
+[node name="Label" type="Label" parent="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 2 colors"]
+margin_right = 120.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 15 )
+custom_styles/normal = SubResource( 20 )
+custom_fonts/font = SubResource( 21 )
 text = "Player 2 color"
 align = 1
 valign = 1
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="Title/VBoxContainer/HBoxContainer/Player 2 colors"]
-margin_left = 8.0
-margin_top = 51.0
-margin_right = 114.0
-margin_bottom = 71.0
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 2 colors"]
+margin_left = 7.0
+margin_top = 54.0
+margin_right = 113.0
+margin_bottom = 74.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme = ExtResource( 13 )
 text = "Choose a color"
 color = Color( 0.219608, 0.27451, 0.886275, 1 )
 edit_alpha = false
+
+[node name="dot" type="Sprite" parent="."]
+position = Vector2( 48, 624 )
+texture = ExtResource( 19 )
 
 [connection signal="area_entered" from="Top" to="Top" method="_on_area_entered"]
 [connection signal="area_entered" from="Bottom" to="Bottom" method="_on_area_entered"]
@@ -427,7 +493,7 @@ edit_alpha = false
 [connection signal="scored" from="Out of bounds left" to="." method="_on_Out_of_bounds_left_scored"]
 [connection signal="area_entered" from="Out of bounds right" to="Out of bounds right" method="_on_boundary_entered"]
 [connection signal="scored" from="Out of bounds right" to="." method="_on_Out_of_bounds_right_scored"]
-[connection signal="pressed" from="Winner_container/ColorRect/VBoxContainer/Restart_button" to="." method="_on_Restart_button_pressed"]
-[connection signal="pressed" from="Title/VBoxContainer/Start game" to="." method="_on_Start_game_pressed"]
-[connection signal="color_changed" from="Title/VBoxContainer/HBoxContainer/Player 1 colors/ColorPickerButton" to="Left" method="_on_Player1_color_picked_changed"]
-[connection signal="color_changed" from="Title/VBoxContainer/HBoxContainer/Player 2 colors/ColorPickerButton" to="Right" method="_on_Player2_color_changed"]
+[connection signal="pressed" from="Winner_container/Panel/VBoxContainer/Restart_button" to="." method="_on_Restart_button_pressed"]
+[connection signal="pressed" from="Title/MarginContainer/VBoxContainer/Start game" to="." method="_on_Start_game_pressed"]
+[connection signal="color_changed" from="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 1 colors/ColorPickerButton" to="Left" method="_on_Player1_color_picked_changed"]
+[connection signal="color_changed" from="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 2 colors/ColorPickerButton" to="Right" method="_on_Player2_color_changed"]
