@@ -12,8 +12,8 @@ export (int) var _ball_direction: int = 0
 
 export (Color) var line_color: Color = Color("#ffffff")
 
-# For debugging purposes.
-#onready var dot = $"../dot"
+# Use this for limiting the length of the line.
+const LINE_OFFSET: int = 130
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
     if event is InputEventMouseButton:
@@ -64,13 +64,6 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
     if event is InputEventMouseMotion:
         if pressed:
             var current_mouse_point: Vector2 = event.position
-            # Shorten the number of points that make up the line.
-#            if active_line.get_point_count() == 8:
-#                active_line.remove_point( 0 )
-            # Remove any left over segments after removing points. Also note that the Line2D should only have *one* child (though it could have several grandchildren).
-#            if active_body.get_child_count() > 6:
-#                active_body.get_child( 0 ).queue_free()
-            # Add in the line segments.
             if active_line.get_point_count() > 2:
                 # The static body has either not been created or has been freed.
                 if active_body == null:
@@ -83,17 +76,15 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
                 collision.shape.b = active_line.points[ active_line.points.size() - 2 ]
                 active_body.add_child( collision )
             # Cybereality suggested to limit the position of the Line2D point on the y-axis.
-            if current_mouse_point.y < (initial_mouse_point.y - 200) or current_mouse_point.y > initial_mouse_point.y + 200:
+            if current_mouse_point.y < (initial_mouse_point.y - LINE_OFFSET) or current_mouse_point.y > initial_mouse_point.y + LINE_OFFSET:
                 var deleted_point: Vector2 = active_line.points[ 0 ]
                 active_line.remove_point( 0 )
                 # Delete the accompanying segment to the removed point.
-                if active_body.get_child( 0 ).shape.a == deleted_point or active_body.get_child( 0 ).shape.b == deleted_point:
-                    active_body.get_child( 0 ).queue_free()
+                if active_body.get_child_count() > 0:
+                    if active_body.get_child( 0 ).shape.a == deleted_point or active_body.get_child( 0 ).shape.b == deleted_point:
+                        active_body.get_child( 0 ).queue_free()
             active_line.add_point( current_mouse_point )
-            
-#            var dot_dup = dot.duplicate()
-#            active_line.add_child( dot_dup )
-#            dot_dup.position = current_mouse_point
+           
             # Check for whether this `Line2D` has already been added as a child.
             if active_line.get_name() != "" and has_node( active_line.get_name() ):
                 return
