@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Scripts/Walls.gd" type="Script" id=1]
 [ext_resource path="res://Assets/fence.png" type="Texture" id=2]
@@ -26,48 +26,56 @@ extents = Vector2( 514, 10 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 519, 10 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 114.754, 298.859 )
+[sub_resource type="DynamicFont" id=3]
+size = 15
+font_data = ExtResource( 18 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 114.754, 298.859 )
+[sub_resource type="DynamicFont" id=4]
+size = 15
+font_data = ExtResource( 18 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 16, 309 )
+extents = Vector2( 114.754, 298.859 )
 
 [sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 114.754, 298.859 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 16, 309 )
+
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 10, 299.451 )
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=9]
 radius = 8.0
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=10]
 size = 37
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 37
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 18 )
-
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 14 )
-region_rect = Rect2( 0, 0, 58, 40 )
 
 [sub_resource type="DynamicFont" id=11]
-size = 23
+size = 37
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 18 )
 
 [sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 58, 40 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 23
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 18 )
+
+[sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 52, 18 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=15]
 size = 18
 use_mipmaps = true
 use_filter = true
@@ -76,30 +84,21 @@ extra_spacing_bottom = 2
 font_data = ExtResource( 15 )
 fallback/0 = ExtResource( 10 )
 
-[sub_resource type="StyleBoxTexture" id=14]
+[sub_resource type="StyleBoxTexture" id=16]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 134, 111 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=17]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 15 )
 
-[sub_resource type="StyleBoxTexture" id=16]
+[sub_resource type="StyleBoxTexture" id=18]
 texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 52, 18 )
 
-[sub_resource type="DynamicFont" id=17]
-size = 20
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 15 )
-
-[sub_resource type="StyleBoxFlat" id=18]
-bg_color = Color( 0.0588235, 0.423529, 0.611765, 1 )
-
 [sub_resource type="DynamicFont" id=19]
-size = 12
+size = 20
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 15 )
@@ -108,6 +107,15 @@ font_data = ExtResource( 15 )
 bg_color = Color( 0.0588235, 0.423529, 0.611765, 1 )
 
 [sub_resource type="DynamicFont" id=21]
+size = 12
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 15 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.0588235, 0.423529, 0.611765, 1 )
+
+[sub_resource type="DynamicFont" id=23]
 size = 12
 use_mipmaps = true
 use_filter = true
@@ -166,6 +174,21 @@ margin_right = -0.448013
 mouse_filter = 2
 color = Color( 0.576471, 0.576471, 0.576471, 1 )
 __meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Player1_label" type="Label" parent="."]
+anchor_top = 0.96
+anchor_right = 0.227
+anchor_bottom = 0.997
+margin_right = -0.448013
+margin_bottom = 1.79999
+custom_fonts/font = SubResource( 3 )
+text = "Player 1"
+align = 1
+valign = 1
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
@@ -179,11 +202,31 @@ margin_top = -7.8
 mouse_filter = 2
 color = Color( 0.576471, 0.576471, 0.576471, 1 )
 __meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Player2_label" type="Label" parent="."]
+anchor_left = 0.773
+anchor_top = 0.96
+anchor_right = 1.0
+anchor_bottom = 0.997
+margin_left = 0.447937
+margin_bottom = 1.79999
+custom_fonts/font = SubResource( 4 )
+text = "Player 2"
+align = 1
+valign = 1
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Left" type="Node2D" parent="."]
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 _ball_direction = 1
 line_color = Color( 0.882353, 0.192157, 0.192157, 1 )
 
@@ -195,13 +238,17 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left/Left paddle"]
 position = Vector2( 117, 295 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Beep" type="AudioStreamPlayer" parent="Left"]
 stream = ExtResource( 7 )
 
 [node name="Right" type="Node2D" parent="."]
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 _ball_direction = -1
 line_color = Color( 0.219608, 0.27451, 0.886275, 1 )
 
@@ -210,7 +257,7 @@ position = Vector2( 870, 302 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right/Right paddle"]
 position = Vector2( 38.7052, -2.24747 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Beep" type="AudioStreamPlayer" parent="Right"]
 stream = ExtResource( 7 )
@@ -220,7 +267,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Out of bounds left"]
 position = Vector2( -16.6189, 301.603 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="Beep" type="AudioStreamPlayer" parent="Out of bounds left"]
 stream = ExtResource( 9 )
@@ -231,7 +278,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Out of bounds right"]
 position = Vector2( 0, -1.68179 )
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -244,7 +291,7 @@ position = Vector2( 512, 307 )
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mr_puck"]
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 
 [node name="Puck" type="Sprite" parent="Mr_puck"]
 texture = ExtResource( 3 )
@@ -258,7 +305,7 @@ margin_left = 0.0639954
 margin_top = -1.90735e-06
 margin_right = 2.384
 margin_bottom = -7.62939e-06
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 text = "0/3"
 align = 1
 valign = 1
@@ -275,7 +322,7 @@ margin_left = -0.384033
 margin_top = -1.90735e-06
 margin_right = -0.0640259
 margin_bottom = -7.62939e-06
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 11 )
 text = "0/3"
 align = 1
 valign = 1
@@ -309,7 +356,7 @@ margin_top = 4.0
 margin_right = 236.0
 margin_bottom = 220.0
 theme = ExtResource( 13 )
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 12 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Winner_container/Panel"]
 anchor_right = 1.0
@@ -325,7 +372,7 @@ margin_right = 232.0
 margin_bottom = 106.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 13 )
 text = "A winner is you!"
 align = 1
 valign = 1
@@ -342,10 +389,10 @@ margin_bottom = 175.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource( 13 )
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 12 )
-custom_styles/normal = SubResource( 12 )
-custom_fonts/font = SubResource( 13 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "Play again?"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -367,7 +414,7 @@ margin_top = -1.52588e-05
 margin_right = -0.0960083
 margin_bottom = 1.79996
 theme = ExtResource( 13 )
-custom_styles/panel = SubResource( 14 )
+custom_styles/panel = SubResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -394,7 +441,7 @@ margin_bottom = 33.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 17 )
 text = "Draw Ping Pong"
 align = 1
 valign = 1
@@ -408,10 +455,10 @@ size_flags_horizontal = 7
 size_flags_vertical = 7
 size_flags_stretch_ratio = 0.5
 theme = ExtResource( 13 )
-custom_styles/hover = SubResource( 16 )
-custom_styles/pressed = SubResource( 16 )
-custom_styles/normal = SubResource( 16 )
-custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/normal = SubResource( 18 )
+custom_fonts/font = SubResource( 19 )
 text = "Start game"
 
 [node name="Player colors Hbox" type="HBoxContainer" parent="Title/MarginContainer/VBoxContainer"]
@@ -432,8 +479,8 @@ custom_constants/separation = 4
 margin_right = 119.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
-custom_styles/normal = SubResource( 18 )
-custom_fonts/font = SubResource( 19 )
+custom_styles/normal = SubResource( 20 )
+custom_fonts/font = SubResource( 21 )
 text = "Player 1 color"
 align = 1
 valign = 1
@@ -463,8 +510,8 @@ custom_constants/separation = 4
 margin_right = 120.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
-custom_styles/normal = SubResource( 20 )
-custom_fonts/font = SubResource( 21 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = SubResource( 23 )
 text = "Player 2 color"
 align = 1
 valign = 1
