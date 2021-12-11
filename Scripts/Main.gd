@@ -3,9 +3,11 @@
 #    This video: https://www.youtube.com/watch?v=lryc8feJ9sM
 extends Control
 
+# Keep track of those scores.
 var left_player_score: int = 0 setget set_left_score, get_left_score
 var right_player_score: int = 0 setget set_right_score, get_right_score
 
+# Dialogs and panels for showing who won.
 export (NodePath) var winner_container_path: NodePath = @""
 onready var winner_container: MarginContainer = get_node( winner_container_path )
 export (NodePath) var winner_container_label_path: NodePath = @""
@@ -13,7 +15,16 @@ onready var winner_container_label: Label = get_node( winner_container_label_pat
 
 func _ready() -> void:
     # Pause the action until "start" has been pushed.
-    get_tree().set_pause(true)
+    get_tree().set_pause( true )
+
+func _notification( what: int ) -> void:
+    # Check for when the game is sent to the background on Android.
+    match what:
+        NOTIFICATION_APP_PAUSED:
+            # Pause the action.
+            get_tree().paused = true
+            # Show the "pause" dialog.
+            $Pause_container.visible = true
 
 # A player scored a point.
 func _on_Out_of_bounds_left_scored() -> void:
@@ -44,7 +55,7 @@ func get_right_score() -> int:
         win( "Player 2" )
     return right_player_score
 
-# The player won; display a message showing they won.
+# A player won; display a message showing they won.
 func win( who: String ) -> void:
     get_tree().set_pause( true )
     $Winning_sound.play()
@@ -68,3 +79,13 @@ func _on_Restart_button_pressed() -> void:
 func _on_Start_game_pressed() -> void:
     $Title.visible = not $Title.is_visible()
     get_tree().set_pause( false )
+
+# Resume the action.
+func _on_Resume_button_pressed() -> void:
+    get_tree().paused = not get_tree().is_paused()
+    $Pause_container.hide()
+
+# Pause the action.
+func _on_Pause_button_pressed() -> void:
+    get_tree().paused = true
+    $Pause_container.show()
