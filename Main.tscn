@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Scripts/Walls.gd" type="Script" id=1]
 [ext_resource path="res://Assets/fence.png" type="Texture" id=2]
@@ -57,6 +57,10 @@ font_data = ExtResource( 19 )
 [sub_resource type="DynamicFont" id=11]
 size = 50
 font_data = ExtResource( 19 )
+
+[sub_resource type="StyleBoxTexture" id=28]
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 134, 111 )
 
 [sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 14 )
@@ -355,20 +359,31 @@ __meta__ = {
 anchor_left = 0.227
 anchor_right = 0.773
 anchor_bottom = 0.107
-margin_left = 281.552
-margin_top = 504.0
-margin_right = 0.447937
-margin_bottom = 503.8
+margin_left = 407.552
+margin_top = 512.0
+margin_right = -86.552
+margin_bottom = 511.8
 mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Pause_button" type="TextureButton" parent="Pause_button_container"]
-margin_left = 124.0
-margin_top = 17.0
-margin_right = 154.0
-margin_bottom = 47.0
+[node name="Panel" type="Panel" parent="Pause_button_container"]
+margin_left = 15.0
+margin_top = 14.0
+margin_right = 50.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 28 )
+
+[node name="Pause_button" type="TextureButton" parent="Pause_button_container/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 30, 30 )
 hint_tooltip = "Pause the action."
 mouse_filter = 1
@@ -458,7 +473,6 @@ volume_db = -9.087
 
 [node name="Title" type="PanelContainer" parent="."]
 pause_mode = 2
-visible = false
 anchor_left = 0.371
 anchor_top = 0.33
 anchor_right = 0.629
@@ -584,6 +598,7 @@ edit_alpha = false
 
 [node name="Pause_container" type="PanelContainer" parent="."]
 pause_mode = 2
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -642,7 +657,7 @@ text = "Resume"
 [connection signal="scored" from="Out of bounds left" to="." method="_on_Out_of_bounds_left_scored"]
 [connection signal="area_entered" from="Out of bounds right" to="Out of bounds right" method="_on_boundary_entered"]
 [connection signal="scored" from="Out of bounds right" to="." method="_on_Out_of_bounds_right_scored"]
-[connection signal="pressed" from="Pause_button_container/Pause_button" to="." method="_on_Pause_button_pressed"]
+[connection signal="pressed" from="Pause_button_container/Panel/Pause_button" to="." method="_on_Pause_button_pressed"]
 [connection signal="pressed" from="Winner_container/Panel/VBoxContainer/Restart_button" to="." method="_on_Restart_button_pressed"]
 [connection signal="pressed" from="Title/MarginContainer/VBoxContainer/Start game" to="." method="_on_Start_game_pressed"]
 [connection signal="color_changed" from="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 1 colors/ColorPickerButton" to="Left" method="_on_Player1_color_picked_changed"]
