@@ -13,7 +13,7 @@ export (int) var _ball_direction: int = 0
 export (Color) var line_color: Color = Color("#ffffff")
 
 # Use this for limiting the length of the line.
-const LINE_OFFSET: int = 160
+const LINE_OFFSET: int = 100
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
     if event is InputEventMouseButton:
