@@ -108,9 +108,16 @@ func reset() -> void:
     clear_field()
 
 # Assign player 1's color.
-func _on_Player1_color_picked_changed(color: Color):
+func _on_Player1_color_picked_changed(color: Color) -> void:
     line_color = color
 
 # Assign player 2's color.
 func _on_Player2_color_changed(color: Color) -> void:
+    line_color = color
+
+# Color changed via the pause menu.
+func _on_pause_Player1_color_changed(color: Color) -> void:
+    line_color = color
+
+func _on_pause_Player2_color_changed(color: Color) -> void:
     line_color = color

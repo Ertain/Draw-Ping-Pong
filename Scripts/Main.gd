@@ -13,6 +13,12 @@ onready var winner_container: MarginContainer = get_node( winner_container_path 
 export (NodePath) var winner_container_label_path: NodePath = @""
 onready var winner_container_label: Label = get_node( winner_container_label_path )
 
+# Pause panel stuff
+export (NodePath) var player1_pause_color_picker_path: NodePath = @""
+onready var player1_pause_color_picker: ColorPickerButton = get_node( player1_pause_color_picker_path )
+export (NodePath) var player2_pause_color_picker_path: NodePath = @""
+onready var player2_pause_color_picker: ColorPickerButton = get_node( player2_pause_color_picker_path )
+
 func _ready() -> void:
     # Pause the action until "start" has been pushed.
     get_tree().set_pause( true )
@@ -89,3 +95,10 @@ func _on_Resume_button_pressed() -> void:
 func _on_Pause_button_pressed() -> void:
     get_tree().paused = true
     $Pause_container.show()
+
+# Assign the color picker in the pause menu when the player selects it at the start.
+func _on_player1_color_changed(color: Color):
+    player1_pause_color_picker.color = color
+
+func _on_player2_color_changed(color: Color):
+    player2_pause_color_picker.color = color
