@@ -22,6 +22,9 @@ onready var player2_pause_color_picker: ColorPickerButton = get_node( player2_pa
 func _ready() -> void:
     # Pause the action until "start" has been pushed.
     get_tree().set_pause( true )
+    # Assign the default colors to the "pause" menu colors for consistency.
+    player1_pause_color_picker.color = $"Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 1 colors/ColorPickerButton".get_pick_color()
+    player2_pause_color_picker.color = $"Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 2 colors/ColorPickerButton".get_pick_color()
 
 func _notification( what: int ) -> void:
     # Check for when the game is sent to the background on Android.
