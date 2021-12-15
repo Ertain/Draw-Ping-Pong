@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Scripts/Walls.gd" type="Script" id=1]
 [ext_resource path="res://Assets/fence.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Assets/GUI/Simple GUI/pause_icon.png" type="Texture" id=15]
 [ext_resource path="res://Assets/GUI/Simple GUI/background_blue.png" type="Texture" id=16]
 [ext_resource path="res://Assets/GUI/Simple GUI/button_1_blue.png" type="Texture" id=17]
+[ext_resource path="res://Confetti.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Assets/fonts/Sharp retro font/Sharp Retro.ttf" type="DynamicFontData" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -291,6 +292,7 @@ stream = ExtResource( 7 )
 
 [node name="Out of bounds left" type="Area2D" parent="."]
 script = ExtResource( 4 )
+confetti = ExtResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Out of bounds left"]
 position = Vector2( -16.6189, 301.603 )
@@ -299,9 +301,13 @@ shape = SubResource( 7 )
 [node name="Beep" type="AudioStreamPlayer" parent="Out of bounds left"]
 stream = ExtResource( 9 )
 
+[node name="Confetti" parent="Out of bounds left" instance=ExtResource( 18 )]
+position = Vector2( 0, 304 )
+
 [node name="Out of bounds right" type="Area2D" parent="."]
 position = Vector2( 1034.62, 302 )
 script = ExtResource( 4 )
+confetti = ExtResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Out of bounds right"]
 position = Vector2( 0, -1.68179 )
@@ -312,6 +318,10 @@ __meta__ = {
 
 [node name="Beep" type="AudioStreamPlayer" parent="Out of bounds right"]
 stream = ExtResource( 9 )
+
+[node name="Confetti" parent="Out of bounds right" instance=ExtResource( 18 )]
+position = Vector2( -10.62, -0.397003 )
+scale = Vector2( -1, 1 )
 
 [node name="Mr_puck" type="Area2D" parent="."]
 position = Vector2( 512, 307 )

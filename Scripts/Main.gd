@@ -68,6 +68,9 @@ func get_right_score() -> int:
 func win( who: String ) -> void:
     get_tree().set_pause( true )
     $Winning_sound.play()
+    # Stop the confetti from emitting.
+#    $"Out of bounds left/Confetti".emitting = false
+#    $"Out of bounds right/Confetti".emitting = false
     winner_container_label.text = who + " is the winner!"
     winner_container.show()
 
