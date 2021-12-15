@@ -1,0 +1,21 @@
+[gd_scene format=2]
+
+[node name="Confetti" type="CPUParticles2D"]
+emitting = false
+amount = 10
+lifetime = 0.75
+one_shot = true
+randomness = 0.46
+local_coords = false
+gravity = Vector2( 98, 0 )
+initial_velocity = 211.29
+initial_velocity_random = 0.46
+angular_velocity_random = 0.5
+linear_accel = 53.85
+linear_accel_random = 0.65
+radial_accel = 56.0
+tangential_accel = 23.0
+tangential_accel_random = 0.46
+angle_random = 0.32
+scale_amount = 3.0
+color = Color( 1, 0, 0, 1 )

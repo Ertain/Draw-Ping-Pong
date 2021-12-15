@@ -158,6 +158,8 @@ winner_container_path = NodePath("Winner_container")
 winner_container_label_path = NodePath("Winner_container/Panel/VBoxContainer/Label")
 player1_pause_color_picker_path = NodePath("Pause_container/MarginContainer/VBoxContainer/Color_container/Player1_color")
 player2_pause_color_picker_path = NodePath("Pause_container/MarginContainer/VBoxContainer/Color_container/Player2_color")
+left_confetti_path = NodePath("Out of bounds left/Confetti")
+right_confetti_path = NodePath("Out of bounds right/Confetti")
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -320,8 +322,8 @@ __meta__ = {
 stream = ExtResource( 9 )
 
 [node name="Confetti" parent="Out of bounds right" instance=ExtResource( 18 )]
-position = Vector2( -10.62, -0.397003 )
-scale = Vector2( -1, 1 )
+position = Vector2( -10.6199, 18 )
+rotation = -3.14159
 
 [node name="Mr_puck" type="Area2D" parent="."]
 position = Vector2( 512, 307 )

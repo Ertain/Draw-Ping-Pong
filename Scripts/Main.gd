@@ -19,12 +19,21 @@ onready var player1_pause_color_picker: ColorPickerButton = get_node( player1_pa
 export (NodePath) var player2_pause_color_picker_path: NodePath = @""
 onready var player2_pause_color_picker: ColorPickerButton = get_node( player2_pause_color_picker_path )
 
+# For confetti colors.
+export (NodePath) var left_confetti_path: NodePath = @""
+onready var left_confetti: CPUParticles2D = get_node( left_confetti_path )
+export (NodePath) var right_confetti_path: NodePath = @""
+onready var right_confetti: CPUParticles2D = get_node( right_confetti_path )
+
 func _ready() -> void:
     # Pause the action until "start" has been pushed.
     get_tree().set_pause( true )
     # Assign the default colors to the "pause" menu colors for consistency.
     player1_pause_color_picker.color = $"Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 1 colors/ColorPickerButton".get_pick_color()
     player2_pause_color_picker.color = $"Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 2 colors/ColorPickerButton".get_pick_color()
+    # Also assign it to the confetti.
+    left_confetti.color = $"Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 1 colors/ColorPickerButton".get_pick_color()
+    right_confetti.color = $"Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 2 colors/ColorPickerButton".get_pick_color()
 
 func _notification( what: int ) -> void:
     # Check for when the game is sent to the background on Android.
@@ -69,8 +78,8 @@ func win( who: String ) -> void:
     get_tree().set_pause( true )
     $Winning_sound.play()
     # Stop the confetti from emitting.
-#    $"Out of bounds left/Confetti".emitting = false
-#    $"Out of bounds right/Confetti".emitting = false
+    left_confetti.emitting = false
+    right_confetti.emitting = false
     winner_container_label.text = who + " is the winner!"
     winner_container.show()
 
@@ -103,8 +112,10 @@ func _on_Pause_button_pressed() -> void:
     $Pause_container.show()
 
 # Assign the color picker in the pause menu when the player selects it at the start.
-func _on_player1_color_changed(color: Color):
+func _on_player1_color_changed( color: Color ) -> void:
     player1_pause_color_picker.color = color
+    left_confetti.color = color
 
-func _on_player2_color_changed(color: Color):
+func _on_player2_color_changed( color: Color ) -> void:
     player2_pause_color_picker.color = color
+    right_confetti.color = color
