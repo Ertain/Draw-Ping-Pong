@@ -1,7 +1,7 @@
 # Based upon the official Godot "Pong" demo.
 extends Area2D
 
-const NORMAL_SPEED: int = 300
+const NORMAL_SPEED: int = 420
 
 var _speed: int = NORMAL_SPEED
 var direction: Vector2 = Vector2()
