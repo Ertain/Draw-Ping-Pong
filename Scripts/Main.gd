@@ -115,7 +115,9 @@ func _on_Pause_button_pressed() -> void:
 func _on_player1_color_changed( color: Color ) -> void:
     player1_pause_color_picker.color = color
     left_confetti.color = color
+    left_confetti.modulate = color
 
 func _on_player2_color_changed( color: Color ) -> void:
     player2_pause_color_picker.color = color
     right_confetti.color = color
+    right_confetti.modulate = color

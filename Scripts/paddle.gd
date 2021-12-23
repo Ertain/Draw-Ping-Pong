@@ -64,7 +64,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
     if event is InputEventMouseMotion:
         if pressed:
             var current_mouse_point: Vector2 = event.position
-            if active_line.get_point_count() > 2:
+            if is_instance_valid(active_line) and active_line.get_point_count() > 2:
                 # The static body has either not been created or has been freed.
                 if active_body == null:
                     push_error("Collision body not available.")

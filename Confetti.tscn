@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Experimenting/SVG/star.svg" type="Texture" id=1]
 
 [node name="Confetti" type="CPUParticles2D"]
 emitting = false
@@ -7,6 +9,7 @@ lifetime = 0.75
 one_shot = true
 randomness = 0.46
 local_coords = false
+texture = ExtResource( 1 )
 gravity = Vector2( 98, 0 )
 initial_velocity = 211.29
 initial_velocity_random = 0.46
@@ -17,5 +20,4 @@ radial_accel = 56.0
 tangential_accel = 23.0
 tangential_accel_random = 0.46
 angle_random = 0.32
-scale_amount = 3.0
-color = Color( 1, 0, 0, 1 )
+scale_amount = 0.5

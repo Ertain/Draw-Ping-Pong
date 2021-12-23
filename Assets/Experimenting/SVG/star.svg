@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg848"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="star.svg">
+  <defs
+     id="defs842" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.83720338"
+     inkscape:cx="350.07568"
+     inkscape:cy="517.87074"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1028"
+     inkscape:window-x="0"
+     inkscape:window-y="26"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata845">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:type="star"
+       style="fill:#d7d7d7;fill-opacity:1;stroke:none"
+       id="path2999-0"
+       sodipodi:sides="5"
+       sodipodi:cx="253.5"
+       sodipodi:cy="195.86217"
+       sodipodi:r1="71.142464"
+       sodipodi:r2="42.685478"
+       sodipodi:arg1="-1.5707963"
+       sodipodi:arg2="-0.92412569"
+       inkscape:flatsided="false"
+       inkscape:rounded="0.1"
+       inkscape:randomized="0"
+       d="m 253.5,124.7197 c 4.51153,0.0829 22.06885,34.4232 25.71939,37.07543 3.53113,2.56547 40.66881,7.90767 41.94111,12.08281 1.31533,4.31632 -25.91875,31.62608 -27.31309,35.91753 -1.34874,4.15108 5.0467,41.12194 1.46908,43.62216 -3.69861,2.58477 -38.08753,-14.87721 -42.59981,-14.87717 -4.36469,3e-5 -37.54977,17.50708 -41.03317,14.87717 -3.6012,-2.71885 2.37937,-40.8207 0.98496,-45.11213 -1.34879,-4.15106 -28.25374,-30.30197 -26.82897,-34.42756 1.47294,-4.26512 39.55806,-10.35138 43.20855,-13.00366 3.53109,-2.56553 20.088,-36.23473 24.45195,-36.15458 z"
+       inkscape:transform-center-y="-3.4282203"
+       transform="matrix(0.12921992,0,0,0.1356871,70.966414,122.11214)"
+       inkscape:export-filename="F:\Documents\Programming\SDL e C++\Progetti\Physica\bin\data\graphics\misc\stars.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:transform-center-x="2.5535273e-06" />
+  </g>
+</svg>

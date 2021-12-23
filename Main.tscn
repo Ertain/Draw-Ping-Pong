@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Scripts/Walls.gd" type="Script" id=1]
 [ext_resource path="res://Assets/fence.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Assets/GUI/Simple GUI/button_1_blue.png" type="Texture" id=17]
 [ext_resource path="res://Confetti.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Assets/fonts/Sharp retro font/Sharp Retro.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://Assets/confetti color ramp.tres" type="Gradient" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 514, 10 )
@@ -305,6 +306,7 @@ stream = ExtResource( 9 )
 
 [node name="Confetti" parent="Out of bounds left" instance=ExtResource( 18 )]
 position = Vector2( 0, 304 )
+color_ramp = ExtResource( 20 )
 
 [node name="Out of bounds right" type="Area2D" parent="."]
 position = Vector2( 1034.62, 302 )
@@ -324,6 +326,7 @@ stream = ExtResource( 9 )
 [node name="Confetti" parent="Out of bounds right" instance=ExtResource( 18 )]
 position = Vector2( -10.6199, 18 )
 rotation = -3.14159
+color_ramp = ExtResource( 20 )
 
 [node name="Mr_puck" type="Area2D" parent="."]
 position = Vector2( 512, 307 )
@@ -704,8 +707,8 @@ text = "Resume"
 [connection signal="pressed" from="Title/MarginContainer/VBoxContainer/Start game" to="." method="_on_Start_game_pressed"]
 [connection signal="color_changed" from="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 1 colors/ColorPickerButton" to="Left" method="_on_Player1_color_picked_changed"]
 [connection signal="color_changed" from="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 1 colors/ColorPickerButton" to="." method="_on_player1_color_changed"]
-[connection signal="color_changed" from="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 2 colors/ColorPickerButton" to="Right" method="_on_Player2_color_changed"]
 [connection signal="color_changed" from="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 2 colors/ColorPickerButton" to="." method="_on_player2_color_changed"]
+[connection signal="color_changed" from="Title/MarginContainer/VBoxContainer/Player colors Hbox/Player 2 colors/ColorPickerButton" to="Right" method="_on_Player2_color_changed"]
 [connection signal="color_changed" from="Pause_container/MarginContainer/VBoxContainer/Color_container/Player1_color" to="Left" method="_on_pause_Player1_color_changed"]
 [connection signal="color_changed" from="Pause_container/MarginContainer/VBoxContainer/Color_container/Player2_color" to="Right" method="_on_pause_Player2_color_changed"]
 [connection signal="pressed" from="Pause_container/MarginContainer/VBoxContainer/Resume_button" to="." method="_on_Resume_button_pressed"]
