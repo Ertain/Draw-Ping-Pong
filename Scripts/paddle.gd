@@ -117,7 +117,9 @@ func _on_Player2_color_changed(color: Color) -> void:
 
 # Color changed via the pause menu.
 func _on_pause_Player1_color_changed(color: Color) -> void:
+    OS.hide_virtual_keyboard()
     line_color = color
 
 func _on_pause_Player2_color_changed(color: Color) -> void:
+    OS.hide_virtual_keyboard()
     line_color = color

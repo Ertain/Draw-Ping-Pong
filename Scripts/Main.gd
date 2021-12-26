@@ -113,11 +113,15 @@ func _on_Pause_button_pressed() -> void:
 
 # Assign the color picker in the pause menu when the player selects it at the start.
 func _on_player1_color_changed( color: Color ) -> void:
+    # Close the virtual keyboard since it keeps popping up when the color picker comes on-screen.
+    # Answer found here:https://godotengine.org/qa/123555/how-can-i-make-the-android-keyboard-close?show=123617#a123617
+    OS.hide_virtual_keyboard()
     player1_pause_color_picker.color = color
     left_confetti.color = color
     left_confetti.modulate = color
 
 func _on_player2_color_changed( color: Color ) -> void:
+    OS.hide_virtual_keyboard()
     player2_pause_color_picker.color = color
     right_confetti.color = color
     right_confetti.modulate = color
