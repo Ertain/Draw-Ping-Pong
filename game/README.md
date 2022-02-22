@@ -1,0 +1,1 @@
+The file(s) in this directory are meant for the F-Droid build system.
