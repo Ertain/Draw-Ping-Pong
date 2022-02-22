@@ -1,0 +1,7 @@
+Initial release
+- Game has all of its basic functionality:
+  - A puck that moves.
+  - Mechanic for drawing lines to deflect the puck.
+  - Fences for scoring.
+  - Score boards.
+  - Winner screen.
