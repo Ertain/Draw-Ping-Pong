@@ -14,9 +14,6 @@ Description: |
 RepoType: git
 Repo: https://github.com/Ertain/Draw-Ping-Pong.git
 
-- name: Validate Fastlane Supply Metadata
-  uses: ashutoshgngwr/validate-fastlane-supply-metadata@v1
-
 Builds:
   - versionName: 0.9.1
     versionCode: 1
