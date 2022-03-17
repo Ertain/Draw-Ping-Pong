@@ -1,26 +1,24 @@
 Categories:
   - Games
-License: MIT license
+License: MIT
 AuthorName: Jason Anderson
 AuthorEmail: Jason.Anderson@jasonsblog.place
-AuthorWebsite: https://www.jasonsblog.place
+AuthorWebSite: https://www.jasonsblog.place
 SourceCode: https://github.com/Ertain/Draw-Ping-Pong
 IssueTracker: https://github.com/Ertain/Draw-Ping-Pong/issues
-ChangeLog: CHANGELOG.md
-
-Description: |
-    A Ping Pong game where the players draw their paddle. Play it with a friend when you're in line, waiting for food, or when you're bored!
+Changelog: https://github.com/Ertain/Draw-Ping-Pong/blob/main/CHANGELOG.md
 
 RepoType: git
 Repo: https://github.com/Ertain/Draw-Ping-Pong.git
 
 Builds:
   - versionName: 0.9.1
-    versionCode: 1
-    commit: f847fe61d30b3152f6454acd679357c6d1e99244
+    versionCode: 2
+    commit: fbd5d1db956b41c2a996ff54cdfcd89130e27bfe
     sudo:
       - apt-get update || apt-get update
-      - apt-get install -y g++
+      - apt-get install -y g++ locales llvm clang
+      - dpkg-reconfigure locales
     output: output.apk
     srclibs:
       - Godot@3.3.3-stable
@@ -43,23 +41,26 @@ Builds:
       - export HOME=$PWD
       - sed -i "s|DEBUG_KEYSTORE|$PWD/.android/debug.keystore|" ./.config/godot/editor_settings-3.tres
       - popd
-      - scons -j `nproc` platform=server unix_global_settings_path=".."
+      - scons -j `nproc` module_webm_enabled=no use_llvm=yes platform=server unix_global_settings_path=".."
       - export ANDROID_NDK_ROOT=$$NDK$$
-      - scons -j `nproc` platform=android target=release android_arch=armv7
-      - scons -j `nproc` platform=android target=release_debug android_arch=armv7
+      - scons -j `nproc` disable_3d=yes platform=android target=release android_arch=arm64v8
+      - scons -j `nproc` disable_3d=yes platform=android target=release_debug android_arch=arm64v8
       - pushd platform/android/java/
       - gradle generateGodotTemplates
       - popd
       - mkdir -p ../fake_user_home/.local/share/godot/templates/3.3.3.stable/
-      - echo "3.3.3.stable" > ../fake_user_home/.local/share/godot/templates/3.3.3.stable/version.txt
+      - echo "3.3.3.stable" | tee ../fake_user_home/.local/share/godot/templates/3.3.3.stable/version.txt
       - cp ./bin/android_release.apk ../fake_user_home/.local/share/godot/templates/3.3.3.stable/
       - cp ./bin/android_debug.apk ../fake_user_home/.local/share/godot/templates/3.3.3.stable/
       - cp ./bin/android_source.zip ../fake_user_home/.local/share/godot/templates/3.3.3.stable/
       - cd ../game
-      - ../godot/bin/godot_server.x11.tools.* --export Android ../output.apk
-    ndk: r23
+      # Add in the paths to the custom built Android exports to the "export_presets.cfg" file.
+      - sed 's@custom_template/debug=".*"@custom_template/debug="../fake_user_home/.local/share/godot/templates/3.3.3.stable/android_debug.apk"@g' -i export_presets.cfg
+      - sed 's@custom_template/release=".*"@custom_template/release="../fake_user_home/.local/share/godot/templates/3.3.3.stable/android_release.apk"@g' -i export_presets.cfg
+      - LANG="en_US.UTF-8" ../godot/bin/godot_server.x11.tools* --verbose --debug --export-debug Android ../output.apk
+    ndk: r21e
 
 AutoUpdateMode: None
 UpdateCheckMode: None
 CurrentVersion: 0.9.1
-CurrentVersionCode: 1
+CurrentVersionCode: 2
