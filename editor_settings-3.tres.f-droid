@@ -34,7 +34,6 @@ asset_library/available_urls = {
 "godotengine.org (Official)": "https://godotengine.org/asset-library/api"
 }
 asset_library/use_threads = true
-"projects/::home::jason::code::godot-projects::3.3::Draw ping pong" = "/home/jason/code/godot-projects/3.3/Draw ping pong"
 export/android/android_sdk_path = ""
 export/android/debug_keystore = "DEBUG_KEYSTORE"
 export/android/debug_keystore_user = "androiddebugkey"
