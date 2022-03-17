@@ -77,9 +77,15 @@ interface/editor/main__bold_font = ""
 text_editor/highlighting/gdscript/function_definition_color = Color( 0.00392157, 0.882353, 1, 1 )
 text_editor/highlighting/gdscript/node_path_color = Color( 0.392157, 0.756863, 0.352941, 1 )
 asset_library/use_threads = true
+<<<<<<< HEAD
 export/android/adb = "/home/user/Android/Sdk/platform-tools/adb"
 export/android/jarsigner = "/home/user/code/android-studio/jre/bin/jarsigner"
 export/android/debug_keystore = "/home/user/.android/debug.keystore"
+=======
+projects/::home::jason::code::godot-projects::3.3::Geowars = "/home/jason/code/godot-projects/3.3/Geowars"
+export/android/android_sdk_path = ""
+export/android/debug_keystore = "DEBUG_KEYSTORE"
+>>>>>>> fbd5d1db956b41c2a996ff54cdfcd89130e27bfe
 export/android/debug_keystore_user = "androiddebugkey"
 export/android/debug_keystore_pass = "android"
 export/android/force_system_user = false
