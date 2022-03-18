@@ -13,7 +13,7 @@ script_encryption_key=""
 
 [preset.0.options]
 
-custom_template/debug=""
+custom_template/debug="android_debug.apk"
 custom_template/release=""
 custom_template/use_custom_build=false
 custom_template/export_format=0
