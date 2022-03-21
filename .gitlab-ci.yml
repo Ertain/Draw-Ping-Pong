@@ -1,0 +1,10 @@
+# File for saving artifacts from GitLab builds.
+# -- Jason Anderson, March 20, 2022
+fdroid build:
+  artifacts:
+    name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
+    exclude:
+      - godot/**/*.o
+    paths:
+      - godot/
+      - fake_user_home/
